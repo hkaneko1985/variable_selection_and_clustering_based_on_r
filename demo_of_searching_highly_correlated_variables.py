@@ -8,7 +8,7 @@ import pandas as pd
 
 import variable_selection_based_on_r
 
-threshold_of_r = 0.9  # variable whose absolute correlation coefficnent with other variables is higher than threshold_of_r is searched
+threshold_of_r = 0.95  # variable whose absolute correlation coefficnent with other variables is higher than threshold_of_r is searched
 threshold_of_rate_of_same_value = 1
 
 # load data set
@@ -41,5 +41,7 @@ if len(deleting_variable_numbers[0]) != 0:
 print('# of X-variables: {0}'.format(x.shape[1]))
 
 highly_correlated_variable_numbers = variable_selection_based_on_r.search_highly_correlated_variables(x, threshold_of_r)
-
 print('# of highly correlated X-variables: {0}'.format(len(highly_correlated_variable_numbers)))
+
+x_selected = x.drop(x.columns[highly_correlated_variable_numbers], axis=1)
+print('# of selected X-variables: {0}'.format(x_selected.shape[1]))

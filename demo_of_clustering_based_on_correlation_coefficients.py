@@ -8,7 +8,7 @@ import pandas as pd
 
 import variable_selection_based_on_r
 
-threshold_of_r = 0.9  # variable whose absolute correlation coefficnent with other variables is higher than threshold_of_r is searched
+threshold_of_r = 0.95  # variable whose absolute correlation coefficnent with other variables is higher than threshold_of_r is searched
 threshold_of_rate_of_same_value = 1
 
 # load data set
@@ -42,7 +42,7 @@ print('# of X-variables: {0}'.format(x.shape[1]))
 
 # clustering
 cluster_numbers = variable_selection_based_on_r.clustering_based_on_correlation_coefficients(x, threshold_of_r)
-print('# of cluesters of X-variables: {0}'.format(cluster_numbers.max()))
+print('# of cluesters in X-variables: {0}'.format(cluster_numbers.max()))
 
 # select one variable in each cluster
 x_selected = pd.DataFrame([])
